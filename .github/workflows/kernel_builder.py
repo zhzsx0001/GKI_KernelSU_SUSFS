@@ -344,7 +344,7 @@ CONFIG_ZRAM_WRITEBACK=y
         logger.info(f"初始化 repo: {formatted_branch}")
         self._run_cmd(
             f"$REPO init --depth=1 "
-            f"--u https://android.googlesource.com/kernel/manifest "
+            f"-u https://android.googlesource.com/kernel/manifest "
             f"-b common-{formatted_branch} --repo-rev=v2.16",
             check=False
         )
