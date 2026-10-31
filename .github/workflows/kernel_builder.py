@@ -831,6 +831,8 @@ CONFIG_ZRAM_WRITEBACK=y
         config_file = self.work_dir / "common/arch/arm64/configs/gki_defconfig"
         with open(config_file, "a") as f:
             f.write("CONFIG_MODULE_SIG_FORCE=n\n")
+            # SukiSU 补丁在 6.1 新内核上会产生未初始化变量警告，禁用 -Werror 防止编译中断
+            f.write("CONFIG_WERROR=n\n")
 
         logger.info("Bazel 配置完成")
     
