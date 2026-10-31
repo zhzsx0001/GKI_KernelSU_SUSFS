@@ -212,8 +212,8 @@ jobs:
       - name: Prepare artifacts
         run: |
           mkdir -p artifacts
-          find . -name "*.zip" -type f -exec cp {} artifacts/ \;
-          find . -name "*.img" -type f -exec cp {} artifacts/ \;
+          find /tmp/gki-build -name "*.zip" -type f -exec cp {} artifacts/ \;
+          find /tmp/gki-build -name "*.img" -type f -exec cp {} artifacts/ \;
           echo "=== Artifacts ==="
           ls -la artifacts/
 
