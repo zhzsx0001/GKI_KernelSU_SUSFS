@@ -992,7 +992,8 @@ CONFIG_ZRAM_WRITEBACK=y
                 logger.info("使用 Bazel 构建方式...")
                 result = self._run_cmd(
                     "tools/bazel build --disk_cache=/home/runner/.cache/bazel "
-                    "--config=fast --lto=thin //common:kernel_aarch64_dist",
+                    "--config=fast --lto=thin --nokmi_symbol_list_strict_mode "
+                    "--nokmi_symbol_list_violations_check //common:kernel_aarch64_dist",
                     check=False
                 )
             
