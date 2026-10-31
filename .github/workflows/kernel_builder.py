@@ -829,6 +829,13 @@ CONFIG_ZRAM_WRITEBACK=y
                 logger.info("已移除 zram 和 zsmalloc 模块引用")
 
         config_file = self.work_dir / "common/arch/arm64/configs/gki_defconfig"
+        # 禁用 zram/zsmalloc 模块编译（module_outs 已移除引用，避免 built-but-not-copied 报错）
+        with open(config_file, "r") as f:
+            content = f.read()
+        content = content.replace("CONFIG_ZRAM=m", "CONFIG_ZRAM=n")
+        content = content.replace("CONFIG_ZSMALLOC=m", "CONFIG_ZSMALLOC=n")
+        with open(config_file, "w") as f:
+            f.write(content)
         with open(config_file, "a") as f:
             f.write("CONFIG_MODULE_SIG_FORCE=n\n")
             # SukiSU 补丁在 6.1 新内核上会产生未初始化变量警告，禁用 -Werror 防止编译中断
