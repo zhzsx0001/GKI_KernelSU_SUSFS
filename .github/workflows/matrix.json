@@ -26,7 +26,8 @@
     {"sub_level": "90", "os_patch_level": "2024-08"},
     {"sub_level": "99", "os_patch_level": "2024-10"},
     {"sub_level": "124", "os_patch_level": "2025-02"},
-    {"sub_level": "145", "os_patch_level": "2025-09"}
+    {"sub_level": "145", "os_patch_level": "2025-09"},
+    {"sub_level": "177", "os_patch_level": "2026-10"}
   ],
   "android15-6.6": [
     {"sub_level": "50", "os_patch_level": "2024-10"},
