@@ -902,11 +902,14 @@ CONFIG_ZRAM_WRITEBACK=y
                 with open(bazel_build, "w") as f:
                     f.write('\n'.join(lines))
 
-            # 删除 abi 目录
+            # 删除 abi 目录或文件
             abi_dir = self.work_dir / "common/android/abi_gki_protected_exports_aarch64"
             if abi_dir.exists():
                 import shutil
-                shutil.rmtree(abi_dir)
+                if abi_dir.is_dir():
+                    shutil.rmtree(abi_dir)
+                else:
+                    abi_dir.unlink()
 
             # 修改 stamp.bzl
             stamp_bzl = self.work_dir / "build/kernel/kleaf/impl/stamp.bzl"
